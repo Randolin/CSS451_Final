@@ -725,5 +725,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Environment: {fileID: 1315043743}
-  Controller: 1
-  PS4: 1
+  Controller: 0
+  PS4: 0
