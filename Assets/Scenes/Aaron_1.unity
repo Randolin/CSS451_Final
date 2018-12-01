@@ -1229,7 +1229,7 @@ GameObject:
   m_Component:
   - component: {fileID: 290205164}
   m_Layer: 0
-  m_Name: ResetOnReleaseArtificialLever
+  m_Name: TranslateLeafLever
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1449,7 +1449,7 @@ GameObject:
   m_Component:
   - component: {fileID: 361696429}
   m_Layer: 0
-  m_Name: ResetOnReleaseArtificialLever
+  m_Name: TranslateParentLever
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1542,13 +1542,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 426130373}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a22b451f6097595439a10739ec0d05d6, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e2b583b4b30e4d4c912ba2c5e757416, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Environment: {fileID: 1315043743}
+  axis: 1
   controllable: {fileID: 426130376}
-  displayText: {fileID: 942878719}
-  outputOnMax: Lever Maximum Reached
-  outputOnMin: Lever Minimum Reached
+  valueText: {fileID: 942878719}
 --- !u!114 &426130376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1596,7 +1596,7 @@ GameObject:
   m_Component:
   - component: {fileID: 451602917}
   m_Layer: 0
-  m_Name: ResetOnReleaseArtificialLever
+  m_Name: RotateLeafLever
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4866,13 +4866,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1431864262}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a22b451f6097595439a10739ec0d05d6, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e2b583b4b30e4d4c912ba2c5e757416, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Environment: {fileID: 1315043743}
+  axis: 2
   controllable: {fileID: 1431864265}
-  displayText: {fileID: 1989334252}
-  outputOnMax: Lever Maximum Reached
-  outputOnMin: Lever Minimum Reached
+  valueText: {fileID: 1989334252}
 --- !u!114 &1431864265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5861,7 +5861,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1622170150}
   m_Layer: 0
-  m_Name: ResetOnReleaseArtificialLever
+  m_Name: RotateGrandparentLever
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6713,13 +6713,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1772803841}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a22b451f6097595439a10739ec0d05d6, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e2b583b4b30e4d4c912ba2c5e757416, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Environment: {fileID: 1315043743}
+  axis: 3
   controllable: {fileID: 1772803844}
-  displayText: {fileID: 223298456}
-  outputOnMax: Lever Maximum Reached
-  outputOnMin: Lever Minimum Reached
+  valueText: {fileID: 223298456}
 --- !u!114 &1772803844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7623,13 +7623,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1906997118}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a22b451f6097595439a10739ec0d05d6, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e2b583b4b30e4d4c912ba2c5e757416, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Environment: {fileID: 1315043743}
+  axis: 0
   controllable: {fileID: 1906997121}
-  displayText: {fileID: 1672478367}
-  outputOnMax: Lever Maximum Reached
-  outputOnMin: Lever Minimum Reached
+  valueText: {fileID: 1672478367}
 --- !u!114 &1906997121
 MonoBehaviour:
   m_ObjectHideFlags: 0
