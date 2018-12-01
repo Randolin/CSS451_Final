@@ -336,7 +336,7 @@ public class VRInputController : MonoBehaviour {
 	}
 
 	private void DoLeftTouchpadPressed(object sender, ControllerInteractionEventArgs e) {
-
+		UnityEngine.XR.InputTracking.Recenter();
 	}
 
 	private void DoLeftTouchpadReleased(object sender, ControllerInteractionEventArgs e) {
@@ -523,7 +523,7 @@ public class VRInputController : MonoBehaviour {
 	}
 
 	private void DoRightTouchpadPressed(object sender, ControllerInteractionEventArgs e) {
-
+		UnityEngine.XR.InputTracking.Recenter();
 	}
 
 	private void DoRightTouchpadReleased(object sender, ControllerInteractionEventArgs e) {
