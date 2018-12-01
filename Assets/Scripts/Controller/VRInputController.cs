@@ -5,8 +5,24 @@ using VRTK;
 
 public class VRInputController : MonoBehaviour {
 
+	public Environment Environment;
+
 	public VRTK_ControllerEvents leftCtrl;
 	public VRTK_ControllerEvents rightCtrl;
+
+	private bool leftTriggerPressed = false;
+	private float leftTriggerValue;
+
+	private bool rightTriggerPressed = false;
+	private float rightTriggerValue;
+
+	private void Update() {
+		if (rightTriggerPressed) {
+			Environment.Attract(rightTriggerValue);
+		} else if (leftTriggerPressed) {
+			Environment.Repel(leftTriggerValue);
+		}
+	}
 
 	private void OnEnable()
 	{
@@ -241,11 +257,14 @@ public class VRInputController : MonoBehaviour {
 	}
 
 	private void DoLeftTriggerPressed(object sender, ControllerInteractionEventArgs e) {
-
+		Debug.Log("VRInputController | DoLeftTriggerPressed: " + e);
+		leftTriggerPressed = true;
+		leftTriggerValue = e.buttonPressure;
 	}
 
 	private void DoLeftTriggerReleased(object sender, ControllerInteractionEventArgs e) {
-
+		Debug.Log("VRInputController | DoLeftTriggerReleased");
+		leftTriggerPressed = false;
 	}
 
 	private void DoLeftTriggerTouchStart(object sender, ControllerInteractionEventArgs e) {
@@ -273,7 +292,7 @@ public class VRInputController : MonoBehaviour {
 	}
 
 	private void DoLeftTriggerAxisChanged(object sender, ControllerInteractionEventArgs e) {
-
+		leftTriggerValue = e.buttonPressure;
 	}
 
 	private void DoLeftTriggerSenseAxisChanged(object sender, ControllerInteractionEventArgs e) {
@@ -425,11 +444,14 @@ public class VRInputController : MonoBehaviour {
 	}
 
 	private void DoRightTriggerPressed(object sender, ControllerInteractionEventArgs e) {
-
+		Debug.Log("VRInputController | DoRightTriggerPressed: " + e);
+		rightTriggerPressed = true;
+		rightTriggerValue = e.buttonPressure;
 	}
 
 	private void DoRightTriggerReleased(object sender, ControllerInteractionEventArgs e) {
-
+		Debug.Log("VRInputController | DoRightTriggerReleased");
+		rightTriggerPressed = false;
 	}
 
 	private void DoRightTriggerTouchStart(object sender, ControllerInteractionEventArgs e) {
@@ -457,7 +479,7 @@ public class VRInputController : MonoBehaviour {
 	}
 
 	private void DoRightTriggerAxisChanged(object sender, ControllerInteractionEventArgs e) {
-
+		rightTriggerValue = e.buttonPressure;
 	}
 
 	private void DoRightTriggerSenseAxisChanged(object sender, ControllerInteractionEventArgs e) {
