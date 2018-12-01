@@ -2,15 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputController : MonoBehaviour {
+public enum ControlMode { Controller, Keyboard }
+public enum ControllerType { XBox, PS4}
+
+public class InputController : MonoBehaviour
+{
 
 	public Environment Environment;
 
-	public bool Controller = true;
-	public bool PS4 = false;
+    public ControlMode controlMode = ControlMode.Controller;
+    public ControllerType controllerType = ControllerType.XBox;
 
-	void Update() {
-		if (Controller) {
+	void Update()
+    {
+		if (controlMode == ControlMode.Controller) {
 			ControllerInputCheck();
 		}
 		KeyboardInputCheck();
@@ -21,7 +26,7 @@ public class InputController : MonoBehaviour {
 	///////////////////////////////////////////////////////////////////////////
 	void ControllerInputCheck() {
 
-		if (PS4) {
+		if (controllerType == ControllerType.PS4) {
 			// Right U/D Axis
 			if (Input.GetAxis("PS4RightVertical") != 0) {
 				RightUDAxis(Input.GetAxis("PS4RightVertical"));
