@@ -1,8 +1,12 @@
-﻿using System.Collections;
+﻿// Author(s): Kyla NeSmith
+// last edited: Dec. 2, 2018
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Environment : MonoBehaviour {
+
     public SceneNode RootNode_Crane;
     public SceneNode Cart_Node;
     public SceneNode Claw_Node;
@@ -13,6 +17,9 @@ public class Environment : MonoBehaviour {
     public float CartPosLimit = 45;
     public float ClawNegLimit = -15;
     public float ClawPosLimit = -3;
+
+    public MagneticBehavior Magnet;
+
     void Update()
     {
         Matrix4x4 m = Matrix4x4.identity;
@@ -35,7 +42,7 @@ public class Environment : MonoBehaviour {
         if ((Cart_Node.transform.localPosition.z > CartNegLimit && value < 0) || (Cart_Node.transform.localPosition.z < CartPosLimit && value > 0)){
             Cart_Node.transform.localPosition += new Vector3(0, 0, value * CartTranslateSpeed);
         }
-        
+
 	}
 
 	// Moves Heirarchy Leaf Up/Down with Input [-1 to 1]
@@ -55,11 +62,13 @@ public class Environment : MonoBehaviour {
 	// Triggers Magnetic Attract with Input [0 to 1]
 	public void Attract(float value) {
 		Debug.Log("Environment.cs | Attract: " + value);
+        Magnet.MagneticPull(value);
 	}
 
 	// Triggers Magnetic Repel with Input [0 to 1]
 	public void Repel(float value) {
 		Debug.Log("Environment.cs | Repel: " + value);
+        Magnet.MagneticPush(value);
 	}
 
 }
