@@ -3,7 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Environment : MonoBehaviour {
-
+    public SceneNode RootNode;
+    void Update()
+    {
+        Matrix4x4 m = Matrix4x4.identity;
+        RootNode.CompositeXform(ref m);
+    }
 	///////////////////////////////////////////////////////////////////////////
 	// Control Response Methods
 	///////////////////////////////////////////////////////////////////////////
