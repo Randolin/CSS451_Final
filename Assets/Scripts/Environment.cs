@@ -22,8 +22,12 @@ public class Environment : MonoBehaviour {
 
     void Update()
     {
-        Matrix4x4 m = Matrix4x4.identity;
-        RootNode_Crane.CompositeXform(ref m);
+        // (Kyla) so can test magnet in separate scene
+        if (RootNode_Crane != null)
+        {
+            Matrix4x4 m = Matrix4x4.identity;
+            RootNode_Crane.CompositeXform(ref m);
+        }
     }
 	///////////////////////////////////////////////////////////////////////////
 	// Control Response Methods

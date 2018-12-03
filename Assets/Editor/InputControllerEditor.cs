@@ -25,7 +25,9 @@ public class InputControllerEditor : Editor
         }
 
         InputController ic = (InputController)target;
-        
+
+        Environment environment = ic.Environment;
+
         ic.controlMode = (ControlMode)EditorGUILayout.EnumPopup(
             new GUIContent("Control Mode", "Selecting Controller still allows Keyboard inputs"), ic.controlMode);
 
