@@ -1,8 +1,13 @@
-﻿using System.Collections;
+﻿// Author(s): Kyla NeSmith
+// last edited: Dec. 2, 2018
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Environment : MonoBehaviour {
+public class Environment : MonoBehaviour
+{
+    public MagneticBehavior Magnet;
 
 	///////////////////////////////////////////////////////////////////////////
 	// Control Response Methods
@@ -31,11 +36,13 @@ public class Environment : MonoBehaviour {
 	// Triggers Magnetic Attract with Input [0 to 1]
 	public void Attract(float value) {
 		Debug.Log("Environment.cs | Attract: " + value);
+        Magnet.MagneticPull(value);
 	}
 
 	// Triggers Magnetic Repel with Input [0 to 1]
 	public void Repel(float value) {
 		Debug.Log("Environment.cs | Repel: " + value);
+        Magnet.MagneticPush(value);
 	}
 
 }
