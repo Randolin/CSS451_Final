@@ -9,6 +9,7 @@ public class Environment : MonoBehaviour {
     public float CraneRotateSpeed = .25f;
     public float CartTranslateSpeed = .25f;
     public float ClawTranslateSpeed = .1f;
+    public float ClawRotateSpeed = .25f;
     public float CartNegLimit = 5;
     public float CartPosLimit = 45;
     public float ClawNegLimit = -15;
@@ -25,7 +26,7 @@ public class Environment : MonoBehaviour {
 	// Rotates Heirarchy Grandparent with Input [-1 to 1]
 	public void RotateGrandparent(float value) {
 		Debug.Log("Environment.cs | RotateGrandparent: " + value);
-        RootNode_Crane.transform.localRotation *= Quaternion.Euler(0, CraneRotateSpeed * value, 0);
+        RootNode_Crane.transform.localRotation *= Quaternion.AngleAxis(CraneRotateSpeed * value, Vector3.up);
 
     }
 
@@ -50,7 +51,8 @@ public class Environment : MonoBehaviour {
 	// Rotates Heirarchy Leaf with Input [-1 to 1]
 	public void RotateLeaf(float value) {
 		Debug.Log("Environment.cs | RotateLeaf: " + value);
-	}
+        Claw_Node.transform.localRotation *= Quaternion.AngleAxis(ClawRotateSpeed * value, Vector3.up);
+    }
 
 	// Triggers Magnetic Attract with Input [0 to 1]
 	public void Attract(float value) {
