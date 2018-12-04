@@ -6,6 +6,7 @@ public class Environment : MonoBehaviour {
     public SceneNode RootNode_Crane;
     public SceneNode Cart_Node;
     public SceneNode Claw_Node;
+    public GameObject CockpitPivot;
     public float CraneRotateSpeed = .25f;
     public float CartTranslateSpeed = .25f;
     public float ClawTranslateSpeed = .1f;
@@ -27,6 +28,7 @@ public class Environment : MonoBehaviour {
 	public void RotateGrandparent(float value) {
 		Debug.Log("Environment.cs | RotateGrandparent: " + value);
         RootNode_Crane.transform.localRotation *= Quaternion.AngleAxis(CraneRotateSpeed * value, Vector3.up);
+        CockpitPivot.transform.localRotation *= Quaternion.AngleAxis(CraneRotateSpeed * value, Vector3.up);
 
     }
 
@@ -41,7 +43,7 @@ public class Environment : MonoBehaviour {
 
 	// Moves Heirarchy Leaf Up/Down with Input [-1 to 1]
 	public void TranslateLeaf(float value) {
-		Debug.Log("Environment.cs | TranslateLeaf: " + value);
+		Debug.Log("Environment.cs | TranslateLeaf: " + value); 
         if ((Claw_Node.transform.localPosition.y > ClawNegLimit && value < 0) || (Claw_Node.transform.localPosition.y < ClawPosLimit && value > 0))
         {
             Claw_Node.transform.localPosition += new Vector3(0, ClawTranslateSpeed * value, 0);
