@@ -1,4 +1,7 @@
-﻿using System.Collections;
+﻿// Author(s): Kyla NeSmith
+// last edited: Nov. 30, 2018
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

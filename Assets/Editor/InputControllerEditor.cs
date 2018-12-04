@@ -1,5 +1,5 @@
-﻿// Kyla NeSmith
-// last edited: Nov. 30, 2018
+﻿// Author(s): Kyla NeSmith
+// last edited: Dec. 2, 2018
 // Description: customer editor UI
 
 using UnityEngine;
@@ -11,10 +11,23 @@ using UnityEditor;
 [CustomEditor(typeof(InputController))]
 public class InputControllerEditor : Editor
 {
+
+    bool showDefault = false;
+
     public override void OnInspectorGUI()
     {
+        // in case more public variables are added, be able to use default editor view
+        showDefault = EditorGUILayout.Toggle(new GUIContent("Default Editor", "Select to use Unity's default inspector/editor"), showDefault);
+        if (showDefault)
+        {
+            base.OnInspectorGUI();
+            return;
+        }
+
         InputController ic = (InputController)target;
-        
+
+        Environment environment = ic.Environment;
+
         ic.controlMode = (ControlMode)EditorGUILayout.EnumPopup(
             new GUIContent("Control Mode", "Selecting Controller still allows Keyboard inputs"), ic.controlMode);
 
