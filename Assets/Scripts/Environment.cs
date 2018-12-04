@@ -40,7 +40,7 @@ public class Environment : MonoBehaviour {
 		Debug.Log("Environment.cs | RotateGrandparent: " + value);
         RootNode_Crane.transform.localRotation *= Quaternion.AngleAxis(CraneRotateSpeed * value, Vector3.up);
         CockpitPivot.transform.localRotation *= Quaternion.AngleAxis(CraneRotateSpeed * value, Vector3.up);
-
+       
     }
 
 	// Moves Heirarchy Parent In/Out with Input [-1 to 1]
