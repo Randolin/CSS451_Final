@@ -49,4 +49,15 @@ public class SceneNode : MonoBehaviour {
         }
 
     }
+
+    public Vector3 retPosition()
+    {
+        Matrix4x4 m = PrimitiveList[0].m;
+        Vector3 r;
+        r.x = m.m03;
+        r.y = m.m13;
+        r.z = m.m23;
+        return r;
+
+    }
 }

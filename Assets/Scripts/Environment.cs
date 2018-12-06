@@ -11,6 +11,7 @@ public class Environment : MonoBehaviour {
     public SceneNode Cart_Node;
     public SceneNode Claw_Node;
     public GameObject CockpitPivot;
+    public GameObject floor;
     public float CraneRotateSpeed = .25f;
     public float CartTranslateSpeed = .25f;
     public float ClawTranslateSpeed = .1f;
@@ -20,8 +21,13 @@ public class Environment : MonoBehaviour {
     public float ClawNegLimit = -15;
     public float ClawPosLimit = -3;
 
+    GameObject shadow;
+    
     public MagneticBehavior Magnet;
-
+    void Start()
+    {
+        shadow = Instantiate(Resources.Load("shadow")) as GameObject;
+    }
     void Update()
     {
         // (Kyla) so can test magnet in separate scene
@@ -30,6 +36,7 @@ public class Environment : MonoBehaviour {
             Matrix4x4 m = Matrix4x4.identity;
             RootNode_Crane.CompositeXform(ref m);
         }
+        CastClawShadow();
     }
 	///////////////////////////////////////////////////////////////////////////
 	// Control Response Methods
@@ -78,5 +85,19 @@ public class Environment : MonoBehaviour {
 		Debug.Log("Environment.cs | Repel: " + value);
         Magnet.MagneticPush(value);
 	}
+
+    void CastClawShadow()
+    {
+        Vector3 N = -floor.transform.forward;
+        Vector3 P = Claw_Node.retPosition();
+        Vector3 O = floor.transform.position;
+        Vector3 OP = P - O;
+        float d = Vector3.Dot(OP, N);
+        Quaternion q = Quaternion.FromToRotation(shadow.transform.forward, N);
+        shadow.transform.up = N;
+        Vector3 onPlane = P - d * N;
+        shadow.transform.position = onPlane + N * .1f;
+
+    }
 
 }
