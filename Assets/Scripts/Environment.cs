@@ -10,6 +10,8 @@ public class Environment : MonoBehaviour {
     public SceneNode RootNode_Crane;
     public SceneNode Cart_Node;
     public SceneNode Claw_Node;
+    public GameObject Claw_Obj;
+    public GameObject rope;
     public GameObject CockpitPivot;
     public GameObject floor;
     public float CraneRotateSpeed = .25f;
@@ -37,6 +39,7 @@ public class Environment : MonoBehaviour {
             RootNode_Crane.CompositeXform(ref m);
         }
         CastClawShadow();
+        PositionClawObj();
     }
 	///////////////////////////////////////////////////////////////////////////
 	// Control Response Methods
@@ -85,7 +88,15 @@ public class Environment : MonoBehaviour {
 		Debug.Log("Environment.cs | Repel: " + value);
         Magnet.MagneticPush(value);
 	}
-
+    void PositionClawObj()
+    {
+        Claw_Obj.transform.position =  Claw_Node.retPosition();
+        Vector3 dist = Cart_Node.retPosition() - Claw_Obj.transform.position;
+        rope.transform.position = Claw_Obj.transform.position + dist * .5f;
+        Vector3 tempScale = rope.transform.localScale;
+        tempScale.y = dist.magnitude * .5f;
+        rope.transform.localScale = tempScale;
+    }
     void CastClawShadow()
     {
         Vector3 N = -floor.transform.forward;
