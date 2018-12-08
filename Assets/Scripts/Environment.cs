@@ -96,6 +96,10 @@ public class Environment : MonoBehaviour {
         Vector3 tempScale = rope.transform.localScale;
         tempScale.y = dist.magnitude * .5f;
         rope.transform.localScale = tempScale;
+
+        Quaternion q = Claw_Node.getRot();
+
+        Claw_Obj.transform.localRotation = q;
     }
     void CastClawShadow()
     {

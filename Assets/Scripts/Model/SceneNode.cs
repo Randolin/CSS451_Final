@@ -60,4 +60,17 @@ public class SceneNode : MonoBehaviour {
         return r;
 
     }
+
+    public Quaternion getRot()
+    {
+        Matrix4x4 myTRS = Matrix4x4.TRS(transform.localPosition, transform.localRotation, transform.localScale);
+        //Matrix4x4 concatMatrix = mCombinedParentXform * myTRS;
+        Matrix4x4 concatMatrix = PrimitiveList[0].m;
+        Vector3 x = concatMatrix.GetColumn(0);
+        Vector3 y = concatMatrix.GetColumn(1);
+        Vector3 z = concatMatrix.GetColumn(2);
+        Vector3 size = new Vector3(x.magnitude, y.magnitude, z.magnitude);
+        Quaternion q = Quaternion.LookRotation(z / size.z, y / size.y);
+        return q;
+    }
 }
