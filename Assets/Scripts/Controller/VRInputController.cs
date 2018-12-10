@@ -1,3 +1,5 @@
+// Author(s): Aaron Holloway
+
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -260,11 +262,15 @@ public class VRInputController : MonoBehaviour {
 		Debug.Log("VRInputController | DoLeftTriggerPressed: " + e);
 		leftTriggerPressed = true;
 		leftTriggerValue = e.buttonPressure;
+		if (!rightTriggerPressed) {
+			Environment.RepelActive(true);
+		}
 	}
 
 	private void DoLeftTriggerReleased(object sender, ControllerInteractionEventArgs e) {
 		Debug.Log("VRInputController | DoLeftTriggerReleased");
 		leftTriggerPressed = false;
+		Environment.RepelActive(false);
 	}
 
 	private void DoLeftTriggerTouchStart(object sender, ControllerInteractionEventArgs e) {
@@ -447,11 +453,19 @@ public class VRInputController : MonoBehaviour {
 		Debug.Log("VRInputController | DoRightTriggerPressed: " + e);
 		rightTriggerPressed = true;
 		rightTriggerValue = e.buttonPressure;
+		Environment.AttractActive(true);
+		if (leftTriggerPressed) {
+			Environment.RepelActive(false);
+		}
 	}
 
 	private void DoRightTriggerReleased(object sender, ControllerInteractionEventArgs e) {
 		Debug.Log("VRInputController | DoRightTriggerReleased");
 		rightTriggerPressed = false;
+		Environment.AttractActive(false);
+		if (leftTriggerPressed) {
+			Environment.RepelActive(true);
+		}
 	}
 
 	private void DoRightTriggerTouchStart(object sender, ControllerInteractionEventArgs e) {
