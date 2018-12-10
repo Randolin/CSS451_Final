@@ -64,20 +64,28 @@ public class PlaceContainersGameV2 : MonoBehaviour {
 	public void AddContainer(GameObject container) {
 		switch(container.tag) {
 			case "BlueContainer":
-				blueBay.Add(container);
-				Debug.Log("PlaceContainersGameV2 | Added Blue Container to Bay List");
+				if(!blueBay.Contains(container)) {
+					blueBay.Add(container);
+					Debug.Log("PlaceContainersGameV2 | Added Blue Container to Bay List");
+				}
 				break;
 			case "RedContainer":
-				redBay.Add(container);
-				Debug.Log("PlaceContainersGameV2 | Added Red Container to Bay List");
+				if(!redBay.Contains(container)) {
+					redBay.Add(container);
+					Debug.Log("PlaceContainersGameV2 | Added Red Container to Bay List");
+				}
 				break;
 			case "YellowContainer":
-				yellowBay.Add(container);
-				Debug.Log("PlaceContainersGameV2 | Added Yellow Container to Bay List");
+				if(!yellowBay.Contains(container)) {
+					yellowBay.Add(container);
+					Debug.Log("PlaceContainersGameV2 | Added Yellow Container to Bay List");
+				}
 				break;
 			case "WhiteContainer":
-				whiteBay.Add(container);
-				Debug.Log("PlaceContainersGameV2 | Added White Container to Bay List");
+				if(!whiteBay.Contains(container)) {
+					whiteBay.Add(container);
+					Debug.Log("PlaceContainersGameV2 | Added White Container to Bay List");
+				}
 				break;
 			default:
 				break;
